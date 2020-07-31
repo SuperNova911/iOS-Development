@@ -11,14 +11,22 @@ struct EmojiMemoryGameView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
-        Grid(viewModel.cards) { card in
-            CardView(card: card).onTapGesture {
-                viewModel.choose(card: card)
+        NavigationView {
+            VStack {
+                Grid(viewModel.cards) { card in
+                    CardView(card: card).onTapGesture {
+                        viewModel.choose(card: card)
+                    }
+                    .padding(cardPadding)
+                }
+                Text("Score: \(viewModel.score)")
+                    .font(Font.largeTitle)
             }
-            .padding(cardPadding)
-        }
-        .foregroundColor(Color.orange)
-        .padding()
+            .padding()
+            .foregroundColor(viewModel.themeColor)
+            .navigationBarTitle(viewModel.themeName)
+            .navigationBarItems(trailing: Button(action: { viewModel.newGame() }, label: { Text("New Game") }))
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     let cardPadding: CGFloat = 5;
@@ -40,12 +48,12 @@ struct CardView: View {
                     }
                 }
             }
-//            .aspectRatio(2 / 3, contentMode: ContentMode.fit)
             .font(Font.system(size: fontSize(for: geometry.size)))
         }
     }
     
     // MARK: - Drawing Constants
+    
     let cornerRadius: CGFloat = 10.0
     let edgeLineWidth: CGFloat = 3
     
