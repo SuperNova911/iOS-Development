@@ -19,14 +19,14 @@ class EmojiMemoryGame: ObservableObject {
         model = EmojiMemoryGame.createMemoryGame(of: themes[indexOfTheme])
     }
         
-    static func createMemoryGame(of theme: EmojiTheme) -> MemoryGame<String> {
+    private static func createMemoryGame(of theme: EmojiTheme) -> MemoryGame<String> {
         let emojis = theme.emojis.shuffled()
         return MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairToPlay) { pairIndex in
             return emojis[pairIndex]
         }
     }
     
-    static func createThemes() -> Array<EmojiTheme> {
+    private static func createThemes() -> Array<EmojiTheme> {
         return [EmojiTheme(name: "Halloween", emojis: ["👻", "🎃", "🕷", "🧛", "🧙", "🧟", "🕸", "🦇", "🌙", "☠️"], color: .orange),
                 EmojiTheme(name: "Animals", emojis: ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐯", "🐷", "🐸"], color: .green),
                 EmojiTheme(name: "Sports", emojis: ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🥏", "🎱", "🏓", "🏸"], color: .blue),
