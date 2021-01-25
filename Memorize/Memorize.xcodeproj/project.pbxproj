@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5138371B25BC52A1006CD5BC /* UIColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138371A25BC52A1006CD5BC /* UIColor+RGBA.swift */; };
 		5148E5F924D16B7B00EA73E3 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5148E5F824D16B7B00EA73E3 /* MemoryGame.swift */; };
 		5148E5FB24D16D7F00EA73E3 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5148E5FA24D16D7F00EA73E3 /* EmojiMemoryGame.swift */; };
 		518FA38A24D01016008CF06C /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518FA38924D01016008CF06C /* MemorizeApp.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5138371A25BC52A1006CD5BC /* UIColor+RGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBA.swift"; sourceTree = "<group>"; };
 		5148E5F824D16B7B00EA73E3 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		5148E5FA24D16D7F00EA73E3 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		518FA38624D01016008CF06C /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				51BE2EE324D44A2900C61BED /* GridLayout.swift */,
 				51BE2EE524D44FA300C61BED /* Array+Identifiable.swift */,
 				51BE2EE724D463D900C61BED /* Array+Only.swift */,
+				5138371A25BC52A1006CD5BC /* UIColor+RGBA.swift */,
 				51B5BF7E24D6930D00BEEBF1 /* Localizable.strings */,
 				518FA38D24D0101A008CF06C /* Assets.xcassets */,
 				518FA39224D0101A008CF06C /* Info.plist */,
@@ -171,6 +174,7 @@
 				5148E5F924D16B7B00EA73E3 /* MemoryGame.swift in Sources */,
 				518FA38C24D01016008CF06C /* EmojiMemoryGameView.swift in Sources */,
 				518FA38A24D01016008CF06C /* MemorizeApp.swift in Sources */,
+				5138371B25BC52A1006CD5BC /* UIColor+RGBA.swift in Sources */,
 				51BE2EEA24D5917000C61BED /* Pie.swift in Sources */,
 				51BE2EE424D44A2900C61BED /* GridLayout.swift in Sources */,
 				51BE2EE224D43F1A00C61BED /* Grid.swift in Sources */,

@@ -15,7 +15,7 @@ class EmojiMemoryGame: ObservableObject {
     init() {
         themes = EmojiMemoryGame.createThemes()
         indexOfTheme = Int.random(in: 0..<themes.count);
-        
+         
         model = EmojiMemoryGame.createMemoryGame(of: themes[indexOfTheme])
     }
         
@@ -27,12 +27,12 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     private static func createThemes() -> Array<EmojiTheme> {
-        return [EmojiTheme(name: "Halloween", emojis: ["👻", "🎃", "🕷", "🧛", "🧙", "🧟", "🕸", "🦇", "🌙", "☠️"], color: .orange),
-                EmojiTheme(name: "Animals", emojis: ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐯", "🐷", "🐸"], color: .green),
-                EmojiTheme(name: "Sports", emojis: ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🥏", "🎱", "🏓", "🏸"], color: .blue),
-                EmojiTheme(name: "Foods", emojis: ["🍎", "🍓", "🧀", "🍉", "🍔", "🍕", "🌮", "🍰", "🍣", "🍭"], color: .red),
-                EmojiTheme(name: "People", emojis: ["🧑🏻‍💻", "👮🏻", "👷🏻", "🧑🏻‍🌾", "🧑🏻‍🎤", "🧑🏻‍🍳", "🦹🏻", "👸🏻", "🧑🏻‍🔬", "🧑🏻‍🎓"], color: .pink),
-                EmojiTheme(name: "Flags", emojis: ["🏴‍☠️", "🇰🇷", "🏳️‍🌈", "🇺🇸", "🇬🇷", "🇩🇪", "🇷🇺", "🇰🇵", "🇬🇧", "🇨🇦"], color: .yellow),]
+        return [EmojiTheme(name: "Halloween", emojis: ["👻", "🎃", "🕷", "🧛", "🧙", "🧟", "🕸", "🦇", "🌙", "☠️"], numberOfPairToPlay: 3, color: .orange),
+                EmojiTheme(name: "Animals", emojis: ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐯", "🐷", "🐸"], numberOfPairToPlay: 4, color: .green),
+                EmojiTheme(name: "Sports", emojis: ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🥏", "🎱", "🏓", "🏸"], numberOfPairToPlay: 5, color: .blue),
+                EmojiTheme(name: "Foods", emojis: ["🍎", "🍓", "🧀", "🍉", "🍔", "🍕", "🌮", "🍰", "🍣", "🍭"], numberOfPairToPlay: 6, color: .red),
+                EmojiTheme(name: "People", emojis: ["🧑🏻‍💻", "👮🏻", "👷🏻", "🧑🏻‍🌾", "🧑🏻‍🎤", "🧑🏻‍🍳", "🦹🏻", "👸🏻", "🧑🏻‍🔬", "🧑🏻‍🎓"], numberOfPairToPlay: 7, color: .pink),
+                EmojiTheme(name: "Flags", emojis: ["🏴‍☠️", "🇰🇷", "🏳️‍🌈", "🇺🇸", "🇬🇷", "🇩🇪", "🇷🇺", "🇰🇵", "🇬🇧", "🇨🇦"], numberOfPairToPlay: 8, color: .yellow),]
     }
     
     // MARK: - Access to the Model
@@ -46,7 +46,7 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     var themeColor: Color {
-        themes[indexOfTheme].color
+        Color(themes[indexOfTheme].color)
     }
     
     var score: Int {
@@ -61,16 +61,27 @@ class EmojiMemoryGame: ObservableObject {
     
     func newGame() {
         indexOfTheme = Int.random(in: 0..<themes.count)
+        
         model = EmojiMemoryGame.createMemoryGame(of: themes[indexOfTheme])
+        printTheme(themes[indexOfTheme])
     }
     
-    struct EmojiTheme {
+    private func printTheme(_ theme: EmojiTheme) {
+        let encodedData = try! JSONEncoder().encode(theme)
+        print(String(data: encodedData, encoding: .utf8)!)
+    }
+    
+    struct EmojiTheme: Encodable {
         var name: String
         var emojis: Array<String>
-        var color: Color
+        var color: UIColor.RGB
+        var numberOfPairToPlay: Int
         
-        var numberOfPairToPlay: Int {
-            Int.random(in: 2...min(emojis.count, 5))
+        init(name: String, emojis: Array<String>, numberOfPairToPlay: Int, color: Color) {
+            self.name = name
+            self.emojis = emojis
+            self.numberOfPairToPlay = numberOfPairToPlay
+            self.color = UIColor(color).rgb
         }
     }
 }
